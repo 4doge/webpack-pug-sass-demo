@@ -31,6 +31,18 @@ module.exports = {
           }
         ]
       },
+      {
+        test: /\.njk$/,
+        use: [
+          'html-loader',
+          {
+            loader: 'nunjucks-html-loader',
+            options: {
+              searchPaths: ['./src/templates'],
+            }
+          }
+        ]
+      }
     ]
   },
   plugins: [
@@ -41,6 +53,10 @@ module.exports = {
     new HtmlWebpackPlugin({
       filename: 'another.html',
       template: './src/templates/another.pug'
+    }),
+    new HtmlWebpackPlugin({
+      filename: 'more.html',
+      template: './src/templates/more.njk'
     })
   ]
 };
